@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="運営者情報" description="Paratoki Lab の運営者情報・お問い合わせ先">
+  <nav class="site-nav">
+    <a href="/">ホーム</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/about/">運営者情報</a>
+  </nav>
+
+  <h1>運営者情報</h1>
+
+  <h2>運営</h2>
+  <p>Paratoki Lab</p>
+
+  <h2>事業内容</h2>
+  <p>個人開発者によるスマートフォン・Web アプリの開発・運営。</p>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    アプリへのご要望、不具合報告、その他お問い合わせは下記までお願いいたします。
+  </p>
+  <p>メール: <a href="mailto:info@paratoki.com">info@paratoki.com</a></p>
+  <p>原則として 3 営業日以内にご返信いたします。</p>
+
+  <h2>提供アプリ</h2>
+  <ul>
+    <li>アニあと！〜私のアニメの軌跡〜（Android アプリ）</li>
+    <li>チックンノート（LINE ミニアプリ）</li>
+  </ul>
+
+  <Footer />
+</BaseLayout>
