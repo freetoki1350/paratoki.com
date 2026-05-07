@@ -21,3 +21,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 *.log
+
+# Local-only handoff notes (kept on disk, not pushed)
+HANDOFF.md
