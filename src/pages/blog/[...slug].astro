@@ -1,0 +1,103 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formatDate = (d: Date) =>
+  `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <nav class="site-nav">
+    <a href="/">ホーム</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/about/">運営者情報</a>
+  </nav>
+
+  <article>
+    <h1>{post.data.title}</h1>
+    <p class="meta">
+      <time datetime={post.data.pubDate.toISOString()}>
+        {formatDate(post.data.pubDate)}
+      </time>
+      {
+        post.data.updatedDate && (
+          <span>
+            （最終更新:{" "}
+            <time datetime={post.data.updatedDate.toISOString()}>
+              {formatDate(post.data.updatedDate)}
+            </time>
+            ）
+          </span>
+        )
+      }
+      {post.data.tags.length > 0 && (
+        <span class="tags">
+          {post.data.tags.map((tag) => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </span>
+      )}
+    </p>
+
+    <Content />
+  </article>
+
+  <p style="margin-top: 3em;"><a href="/blog/">← ブログ一覧へ</a></p>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .meta {
+    color: #999;
+    font-size: 0.9em;
+    margin-bottom: 2em;
+  }
+  .tags {
+    margin-left: 12px;
+  }
+  .tag {
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    margin-right: 4px;
+  }
+  article :global(h2) {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+  }
+  article :global(pre) {
+    background: #f6f8fa;
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  article :global(code) {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+  }
+  article :global(blockquote) {
+    border-left: 4px solid #1a73e8;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    color: #555;
+    background: #f8f9fa;
+  }
+</style>

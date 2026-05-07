@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Paratoki Lab" description="日々の暮らしに寄り添うアプリを開発しています。">
+  <nav class="site-nav">
+    <a href="/">ホーム</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/about/">運営者情報</a>
+  </nav>
+
+  <h1>Paratoki Lab</h1>
+  <p class="tagline">日々の暮らしに寄り添うアプリを開発しています。</p>
+
+  <h2>アプリ一覧</h2>
+
+  <div class="app">
+    <h2>アニあと！〜私のアニメの軌跡〜</h2>
+    <p>アニメ視聴記録・統計・バックアップアプリ</p>
+    <a href="/privacy/animetracker/">プライバシーポリシー</a>
+  </div>
+
+  <div class="app">
+    <h2>チックンノート</h2>
+    <p>お子さまの予防接種スケジュールを LINE で管理。前日の自動リマインダー付き。</p>
+    <a href="https://vaccine-note.paratoki.com/legal/privacy">プライバシーポリシー</a>
+  </div>
+
+  <Footer />
+</BaseLayout>
