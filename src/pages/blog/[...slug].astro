@@ -31,9 +31,16 @@ const formatDate = (d: Date) =>
 
   <article>
     <h1>{post.data.title}</h1>
+    {
+      post.data.series && post.data.seriesNo && (
+        <p class="series-badge">
+          {post.data.series} 第 {post.data.seriesNo} 回
+        </p>
+      )
+    }
     <p class="meta">
-      <time datetime={post.data.pubDate.toISOString()}>
-        {formatDate(post.data.pubDate)}
+      <time datetime={post.data.publishDate.toISOString()}>
+        {formatDate(post.data.publishDate)}
       </time>
       {
         post.data.updatedDate && (
@@ -64,6 +71,15 @@ const formatDate = (d: Date) =>
 </BaseLayout>
 
 <style>
+  .series-badge {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1a73e8;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    margin: 0 0 8px;
+  }
   .meta {
     color: #999;
     font-size: 0.9em;
