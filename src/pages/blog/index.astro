@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Footer from "../../components/Footer.astro";
+import { seriesIndex } from "../../data/series.ts";
 
 const allPosts = await getCollection("blog", ({ data }) => !data.draft);
 
@@ -9,28 +10,24 @@ const standalonePosts = allPosts
   .filter((p) => !p.data.series)
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-// Group series posts by series name
-const seriesMap = new Map<string, typeof allPosts>();
+// Map series posts by `${series}/${seriesNo}` for quick lookup
+const seriesPostMap = new Map<string, (typeof allPosts)[number]>();
 for (const post of allPosts) {
-  if (!post.data.series) continue;
-  const arr = seriesMap.get(post.data.series) ?? [];
-  arr.push(post);
-  seriesMap.set(post.data.series, arr);
+  if (post.data.series && post.data.seriesNo != null) {
+    seriesPostMap.set(`${post.data.series}/${post.data.seriesNo}`, post);
+  }
 }
-// Sort each series by seriesNo ascending
-for (const [name, posts] of seriesMap) {
-  seriesMap.set(
-    name,
-    posts.sort((a, b) => (a.data.seriesNo ?? 0) - (b.data.seriesNo ?? 0)),
-  );
-}
-
-const SERIES_TOTAL: Record<string, number> = {
-  "LINE ミニアプリ開発記": 15,
-};
 
 const formatDate = (d: Date) =>
   `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+
+const seriesSections = Object.entries(seriesIndex).map(([name, entries]) => {
+  const total = entries.length;
+  const publishedCount = entries.filter((e) =>
+    seriesPostMap.has(`${name}/${e.no}`),
+  ).length;
+  return { name, entries, total, publishedCount };
+});
 ---
 
 <BaseLayout title="ブログ" description="Paratoki Lab の開発・運営に関する記事">
@@ -67,28 +64,35 @@ const formatDate = (d: Date) =>
   }
 
   {
-    Array.from(seriesMap.entries()).map(([seriesName, posts]) => {
-      const total = SERIES_TOTAL[seriesName];
-      return (
-        <section class="blog-section">
-          <h2>連載: {seriesName}</h2>
-          <p class="series-progress">
-            {total ? `全 ${total} 回構成` : "連載中"}・現在 {posts.length} 回公開中
-          </p>
-          <ul class="post-list series-list">
-            {posts.map((post) => (
-              <li>
-                <span class="series-num">第 {post.data.seriesNo} 回</span>
-                <a href={`/blog/${post.slug}/`} class="post-title">
-                  {post.data.title}
-                </a>
-                <p class="excerpt">{post.data.description}</p>
+    seriesSections.map(({ name, entries, total, publishedCount }) => (
+      <section class="blog-section">
+        <h2>連載: {name}</h2>
+        <p class="series-progress">
+          全 {total} 回構成・現在 {publishedCount} 回公開中
+        </p>
+        <ul class="series-list">
+          {entries.map((entry) => {
+            const post = seriesPostMap.get(`${name}/${entry.no}`);
+            const published = !!post;
+            return (
+              <li class={published ? "published" : "upcoming"}>
+                <span class="series-num">第 {entry.no} 回</span>
+                {published ? (
+                  <a href={`/blog/${post!.slug}/`} class="series-title">
+                    {entry.title}
+                  </a>
+                ) : (
+                  <span class="series-title">
+                    {entry.title}
+                    <span class="upcoming-badge">後日掲載</span>
+                  </span>
+                )}
               </li>
-            ))}
-          </ul>
-        </section>
-      );
-    })
+            );
+          })}
+        </ul>
+      </section>
+    ))
   }
 
   <Footer />
@@ -131,15 +135,52 @@ const formatDate = (d: Date) =>
     font-size: 0.95em;
     margin: 8px 0 0;
   }
-  .series-list .series-num {
-    display: inline-block;
+  .series-list {
+    list-style: none;
+    padding: 0;
+  }
+  .series-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .series-list li.upcoming {
+    opacity: 0.55;
+  }
+  .series-num {
+    flex-shrink: 0;
     background: #e8f0fe;
     color: #1a73e8;
     padding: 2px 10px;
     border-radius: 12px;
     font-size: 0.85em;
     font-weight: 600;
-    margin-right: 10px;
-    vertical-align: middle;
+    line-height: 1.6;
+  }
+  .upcoming .series-num {
+    background: #f0f0f0;
+    color: #999;
+  }
+  .series-title {
+    flex: 1;
+    font-size: 1em;
+    text-decoration: none;
+    color: #1a73e8;
+  }
+  .upcoming .series-title {
+    color: #999;
+    cursor: default;
+  }
+  .upcoming-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 8px;
+    background: #f5f5f5;
+    color: #888;
+    font-size: 0.75em;
+    border-radius: 4px;
+    font-weight: normal;
   }
 </style>
