@@ -102,8 +102,8 @@ firebase deploy --only functions:verifyLineIdToken
 
 ## 関連記事
 
-- #3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装（後日掲載）
-- #10 LINE Webhook の「検証」が初回必ず失敗する理由とコールドスタート対策（後日掲載）
+- [#3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装](/blog/03-liff-firebase-custom-token/)
+- [#10 LINE Webhook の「検証」が初回必ず失敗する理由とコールドスタート対策](/blog/10-line-webhook-cold-start/)
 
 ## 参考
 
