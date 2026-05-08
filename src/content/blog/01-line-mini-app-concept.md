@@ -95,9 +95,9 @@ Android のままでもアプリ自体は動かせる状態でした。それで
 
 ## 関連記事
 
-- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](./02-architecture-overview.md)
-- [#13 お名前.com で取得したドメインを Vercel に CNAME 接続する完全手順](./13-onamae-vercel-custom-domain.md)
-- [#15 個人開発で医療系アプリのプライバシーポリシー・利用規約を書くときの最低ライン](./15-privacy-policy-terms.md)
+- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](/blog/02-architecture-overview/)
+- [#13 お名前.com で取得したドメインを Vercel に CNAME 接続する完全手順](/blog/13-onamae-vercel-custom-domain/)
+- [#15 個人開発で医療系アプリのプライバシーポリシー・利用規約を書くときの最低ライン](/blog/15-privacy-policy-terms/)
 
 ---
 

@@ -139,8 +139,8 @@ export function getPublicEnv(): PublicEnv {
 
 ## 関連記事
 
-- [#7 Vercel デプロイで半日溶かした 4 つの罠](./07-vercel-deploy-traps.md)
-- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](./02-architecture-overview.md)
+- [#7 Vercel デプロイで半日溶かした 4 つの罠](/blog/07-vercel-deploy-traps/)
+- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](/blog/02-architecture-overview/)
 
 ## 参考
 

@@ -117,8 +117,8 @@ gcloud secrets add-iam-policy-binding LINE_CHANNEL_ID \
 
 ## 関連記事
 
-- [#3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装](./03-liff-firebase-custom-token.md)
-- [#10 LINE Webhook の「検証」が初回必ず失敗する理由とコールドスタート対策](./10-line-webhook-cold-start.md)
+- #3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装（後日掲載）
+- #10 LINE Webhook の「検証」が初回必ず失敗する理由とコールドスタート対策（後日掲載）
 
 ## 参考
 

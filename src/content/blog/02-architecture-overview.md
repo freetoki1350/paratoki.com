@@ -151,10 +151,10 @@ Firestore の `Timestamp` 型はタイムゾーンの罠が多いので、「カ
 
 ## 関連記事
 
-- [#1 LINE で動くミニアプリを個人開発した記録 — 構想・収益モデル・技術スタック選定の裏側](./01-line-mini-app-concept.md)
-- [#3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装](./03-liff-firebase-custom-token.md)
-- [#4 Firestore の階層設計でセキュリティルールを劇的にシンプルにする方法](./04-firestore-hierarchy.md)
-- [#12 LINE 公式アカウントで日次リマインダー Push を実装する](./12-daily-reminder-push.md)
+- [#1 LINE で動くミニアプリを個人開発した記録 — 構想・収益モデル・技術スタック選定の裏側](/blog/01-line-mini-app-concept/)
+- #3 LINE LIFF の ID トークンを Firebase Custom Token に変換する認証フロー実装（後日掲載）
+- #4 Firestore の階層設計でセキュリティルールを劇的にシンプルにする方法（後日掲載）
+- #12 LINE 公式アカウントで日次リマインダー Push を実装する（後日掲載）
 
 ---
 

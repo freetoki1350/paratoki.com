@@ -132,8 +132,8 @@ draft: false
 
 ## 関連記事
 
-- [#1 LINE で動くミニアプリを個人開発した記録 — 構想・収益モデル・技術スタック選定の裏側](./01-line-mini-app-concept.md)
-- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](./02-architecture-overview.md)
+- [#1 LINE で動くミニアプリを個人開発した記録 — 構想・収益モデル・技術スタック選定の裏側](/blog/01-line-mini-app-concept/)
+- [#2 LINE LIFF + Firebase + Vercel で月額 0 円運用するためのアーキテクチャ全体図](/blog/02-architecture-overview/)
 
 ## 参考
 

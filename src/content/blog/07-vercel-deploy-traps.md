@@ -137,8 +137,8 @@ Vercel に Next.js を上げてうまく動かないとき、env 系で疑う順
 
 ## 関連記事
 
-- [#6 Next.js で `process.env[varName]` が undefined になる罠](./06-nextjs-process-env-dynamic.md)
-- [#13 お名前.com で取得したドメインを Vercel に CNAME 接続する完全手順](./13-onamae-vercel-custom-domain.md)
+- [#6 Next.js で `process.env[varName]` が undefined になる罠](/blog/06-nextjs-process-env-dynamic/)
+- [#13 お名前.com で取得したドメインを Vercel に CNAME 接続する完全手順](/blog/13-onamae-vercel-custom-domain/)
 
 ## 参考
 
