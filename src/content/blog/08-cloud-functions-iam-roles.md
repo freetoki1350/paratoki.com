@@ -128,23 +128,3 @@ gcloud secrets add-iam-policy-binding LINE_CHANNEL_ID \
 
 ---
 
-## 執筆メモ（公開前に削除）
-
-### ファクト未確認箇所
-
-- 7 つのロール名の **2026 年時点での正式名称・ID**: `gcloud iam roles describe` で実機確認推奨
-- `roles/firebase.sdkAdminServiceAgent` は実在するが、デフォルトサービスアカウントに既定で付与されている可能性あり。実機で確認
-- 「第 2 世代 = Cloud Run」のメンタルモデルは正しいが、第 1 世代と混在していたら適用外。著者環境を確認
-- `firebase functions:secrets:set` の自動付与挙動は Firebase CLI バージョンに依存。実環境のバージョンを記載
-
-### ユーザー追記推奨箇所
-
-- 各エラー文を実機ログで原文ママに差し替え（特に表 4 のエラー文）
-- 「2 〜 3 分待つ」の体感を実測値に
-- 自分が最終的に組んだ `gcloud` スクリプトをそのまま貼る
-
-### 引用元
-
-- HANDOFF.md ハマりやすいポイント（推測ベース）
-- `vaccine-note-line/functions/` 全体（実際に必要だったロールのセット）
-- 想定文字数: 2,500〜3,000 字 → 本文約 2,800 字
