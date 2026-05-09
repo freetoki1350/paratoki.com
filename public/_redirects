@@ -1,0 +1,3 @@
+# Legacy URL redirects (kept after restructure 2026-05-09)
+/privacy/animetracker     /apps/animetracker/privacy   301
+/privacy/animetracker/    /apps/animetracker/privacy/  301

@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Footer from "../../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="アニあと！〜私のアニメの軌跡〜"
+  description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、自分のデータは自分の手元に。"
+>
+  <nav class="site-nav">
+    <a href="/">ホーム</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/about/">運営者情報</a>
+  </nav>
+
+  <h1>アニあと！</h1>
+  <p class="tagline">〜私のアニメの軌跡〜</p>
+  <p>
+    アニメの視聴記録を <strong>端末ローカル</strong> に保存できる Android アプリです。
+    視聴履歴は自分の手元にだけ残り、外部サーバーに送信されません。
+  </p>
+
+  <h2>こんな方に</h2>
+  <ul>
+    <li>アニメの視聴履歴を自分の手で管理したい</li>
+    <li>クラウドサービスに頼らず、データを自分の端末に置いておきたい</li>
+    <li>シンプルに「観た」「観ている」を記録したい</li>
+  </ul>
+
+  <h2>主な機能</h2>
+  <ul>
+    <li>作品の視聴記録（タイトル・話数・放送年など）</li>
+    <li>視聴ステータス管理（視聴中・完走・未視聴）</li>
+    <li>視聴本数や年別の統計表示</li>
+    <li>端末・クラウドストレージへのバックアップ（自分の責任で）</li>
+  </ul>
+
+  <h2>プライバシー方針</h2>
+  <ul>
+    <li>個人情報は外部サーバーに送信しません</li>
+    <li>入力データはすべて端末内ストレージに保存されます</li>
+    <li>クラウド同期機能はありません（自分で取るバックアップが基本）</li>
+  </ul>
+  <p>
+    詳細は <a href="/apps/animetracker/privacy/">プライバシーポリシー</a> をご確認ください。
+  </p>
+
+  <h2>提供状況</h2>
+  <p>
+    Google Play での公開に向けて準備中です。公開時に本ページで案内します。
+  </p>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    ご要望・不具合報告などは{" "}
+    <a href="mailto:info@paratoki.com">info@paratoki.com</a> までどうぞ。
+  </p>
+
+  <Footer />
+</BaseLayout>

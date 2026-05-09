@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Footer from "../../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="チックンノート"
+  description="お子さまの予防接種スケジュールを LINE で管理。前日の自動リマインダー付き。LIFF ミニアプリ。"
+>
+  <nav class="site-nav">
+    <a href="/">ホーム</a>
+    <a href="/blog/">ブログ</a>
+    <a href="/about/">運営者情報</a>
+  </nav>
+
+  <h1>チックンノート</h1>
+  <p class="tagline">お子さまの予防接種スケジュールを LINE で管理</p>
+  <p>
+    厚生労働省が公表する標準的な予防接種スケジュールに基づいて、お子さまの接種予定を自動で計算し、LINE
+    上で表示・管理できる LIFF ミニアプリです。次回接種の前日に LINE で自動リマインダーが届きます。
+  </p>
+
+  <h2>特徴</h2>
+  <ul>
+    <li><strong>専用アプリ不要</strong> — LINE 公式アカウントを友だち追加するだけ</li>
+    <li><strong>自動スケジュール生成</strong> — 生年月日から推奨接種時期を自動計算</li>
+    <li><strong>前日リマインダー</strong> — LINE で通知が届くので接種日を忘れにくい</li>
+    <li><strong>家族で共有しやすい</strong> — LINE 上なので保護者間の共有が容易（同じアカウントの範囲内で）</li>
+    <li><strong>無料</strong> — 個人運用のため広告も挟まず提供</li>
+  </ul>
+
+  <h2>使い方</h2>
+  <ol>
+    <li>LINE で公式アカウント「チックンノート」を友だち追加</li>
+    <li>表示されたメニューから LIFF アプリを起動</li>
+    <li>お子さまの名前と生年月日を登録</li>
+    <li>標準的な予防接種スケジュールが自動表示される</li>
+    <li>接種が完了したら「接種済み」をタップ</li>
+  </ol>
+
+  <h2>使ってみる</h2>
+  <p>
+    <a href="https://vaccine-note.paratoki.com/">https://vaccine-note.paratoki.com/</a>{" "}
+    から LIFF アプリにアクセスできます（LINE ログインが必要です）。
+  </p>
+
+  <h2>規約とプライバシー</h2>
+  <ul>
+    <li>
+      <a href="https://vaccine-note.paratoki.com/legal/privacy">
+        プライバシーポリシー
+      </a>
+    </li>
+    <li>
+      <a href="https://vaccine-note.paratoki.com/legal/terms">
+        利用規約
+      </a>
+    </li>
+  </ul>
+
+  <h2>注意事項</h2>
+  <ul>
+    <li>
+      本アプリは個別の医学的助言・診断・治療を提供するものではありません。実際の接種計画は必ず医師・かかりつけ医にご相談ください
+    </li>
+    <li>
+      表示されるスケジュールはあくまで一般的な目安です。お子さまの体調や地域の制度により最適な時期は変わります
+    </li>
+  </ul>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    ご要望・不具合報告などは{" "}
+    <a href="mailto:info@paratoki.com">info@paratoki.com</a> までどうぞ。
+  </p>
+
+  <Footer />
+</BaseLayout>
