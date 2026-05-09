@@ -1,0 +1,44 @@
+---
+const currentPath = Astro.url.pathname;
+
+interface NavItem {
+  href: string;
+  label: string;
+  matchPrefix: string;
+}
+
+const items: NavItem[] = [
+  { href: "/", label: "ホーム", matchPrefix: "/" },
+  { href: "/apps/", label: "アプリ", matchPrefix: "/apps" },
+  { href: "/blog/", label: "ブログ", matchPrefix: "/blog" },
+  { href: "/about/", label: "運営者情報", matchPrefix: "/about" },
+];
+
+const isActive = (item: NavItem) => {
+  if (item.matchPrefix === "/") {
+    return currentPath === "/";
+  }
+  return currentPath.startsWith(item.matchPrefix);
+};
+---
+
+<nav class="site-nav" aria-label="サイト内移動">
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        class={isActive(item) ? "active" : ""}
+        aria-current={isActive(item) ? "page" : undefined}
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  nav.site-nav .active {
+    color: #1a73e8;
+    font-weight: 600;
+  }
+</style>

@@ -1,39 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Paratoki Lab" description="日々の暮らしに寄り添うアプリを開発しています。">
-  <nav class="site-nav">
-    <a href="/">ホーム</a>
-    <a href="/blog/">ブログ</a>
-    <a href="/about/">運営者情報</a>
-  </nav>
+  <SiteNav />
 
   <h1>Paratoki Lab</h1>
   <p class="tagline">日々の暮らしに寄り添うアプリを開発しています。</p>
 
-  <h2>アプリ一覧</h2>
+  <h2>アプリ</h2>
 
   <div class="app">
-    <h2><a href="/apps/animetracker/">アニあと！〜私のアニメの軌跡〜</a></h2>
-    <p>アニメ視聴記録・統計・バックアップアプリ</p>
-    <p class="app-links">
-      <a href="/apps/animetracker/">詳細</a>
-      {" "} ・ {" "}
-      <a href="/apps/animetracker/privacy/">プライバシーポリシー</a>
-    </p>
+    <h3><a href="/apps/animetracker/">アニあと！〜私のアニメの軌跡〜</a></h3>
+    <p>アニメの視聴記録を端末ローカルに保存できる Android アプリ。</p>
   </div>
 
   <div class="app">
-    <h2><a href="/apps/chickenote/">チックンノート</a></h2>
+    <h3><a href="/apps/chickenote/">チックンノート</a></h3>
     <p>お子さまの予防接種スケジュールを LINE で管理。前日の自動リマインダー付き。</p>
-    <p class="app-links">
-      <a href="/apps/chickenote/">詳細</a>
-      {" "} ・ {" "}
-      <a href="https://vaccine-note.paratoki.com/legal/privacy">プライバシーポリシー</a>
-    </p>
   </div>
+
+  <p style="margin-top: 1em;">
+    <a href="/apps/">アプリ一覧を見る →</a>
+  </p>
+
+  <h2>ブログ</h2>
+  <p>個人開発・技術メモ・運営の記録などを書いています。</p>
+  <p>
+    <a href="/blog/">ブログを読む →</a>
+  </p>
 
   <Footer />
 </BaseLayout>

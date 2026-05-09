@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import Footer from "../../components/Footer.astro";
+
+interface AppEntry {
+  slug: string;
+  title: string;
+  description: string;
+  platform: string;
+  status: string;
+}
+
+const apps: AppEntry[] = [
+  {
+    slug: "animetracker",
+    title: "アニあと！〜私のアニメの軌跡〜",
+    description:
+      "アニメの視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、データは自分の手元に。",
+    platform: "Android",
+    status: "Google Play 公開準備中",
+  },
+  {
+    slug: "chickenote",
+    title: "チックンノート",
+    description:
+      "お子さまの予防接種スケジュールを LINE で管理。前日の自動リマインダー付き。",
+    platform: "LINE LIFF（ミニアプリ）",
+    status: "公開中",
+  },
+];
+---
+
+<BaseLayout
+  title="アプリ一覧"
+  description="Paratoki Lab が個人開発しているアプリの一覧。"
+>
+  <SiteNav />
+
+  <h1>アプリ一覧</h1>
+  <p class="tagline">Paratoki Lab で個人開発しているアプリです。</p>
+
+  {
+    apps.map((app) => (
+      <div class="app">
+        <h2>
+          <a href={`/apps/${app.slug}/`}>{app.title}</a>
+        </h2>
+        <p>{app.description}</p>
+        <p class="app-meta">
+          <span class="platform">{app.platform}</span>
+          {" ・ "}
+          <span class="status">{app.status}</span>
+        </p>
+      </div>
+    ))
+  }
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .app-meta {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 8px;
+  }
+</style>

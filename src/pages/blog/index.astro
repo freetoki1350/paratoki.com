@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteNav from "../../components/SiteNav.astro";
 import Footer from "../../components/Footer.astro";
 import { seriesIndex } from "../../data/series.ts";
 
@@ -31,11 +32,7 @@ const seriesSections = Object.entries(seriesIndex).map(([name, entries]) => {
 ---
 
 <BaseLayout title="ブログ" description="Paratoki Lab の開発・運営に関する記事">
-  <nav class="site-nav">
-    <a href="/">ホーム</a>
-    <a href="/blog/">ブログ</a>
-    <a href="/about/">運営者情報</a>
-  </nav>
+  <SiteNav />
 
   <h1>ブログ</h1>
   <p class="tagline">アプリ開発・運営の記録、技術メモ、雑記など。</p>

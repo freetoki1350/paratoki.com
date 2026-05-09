@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteNav from "../../../components/SiteNav.astro";
 import Footer from "../../../components/Footer.astro";
 ---
 
@@ -7,11 +8,7 @@ import Footer from "../../../components/Footer.astro";
   title="アニあと！〜私のアニメの軌跡〜"
   description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、自分のデータは自分の手元に。"
 >
-  <nav class="site-nav">
-    <a href="/">ホーム</a>
-    <a href="/blog/">ブログ</a>
-    <a href="/about/">運営者情報</a>
-  </nav>
+  <SiteNav />
 
   <h1>アニあと！</h1>
   <p class="tagline">〜私のアニメの軌跡〜</p>
