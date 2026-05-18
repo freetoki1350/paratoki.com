@@ -1,0 +1,26 @@
+---
+/**
+ * Google Analytics 4 計測タグ。
+ *
+ * 環境変数 PUBLIC_GA_MEASUREMENT_ID（G-XXXXXXXXXX 形式）が設定されている時のみ
+ * 出力される。未設定（ローカル開発時など）は何も描画しない。
+ *
+ * - `anonymize_ip: true` で IP マスク
+ * - `outbound_click` イベントは BaseLayout 末尾の inline script で別途送信
+ */
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+
+{
+  GA_ID && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script is:inline define:vars={{ GA_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+      </script>
+    </>
+  )
+}
