@@ -67,6 +67,9 @@ const seriesSections = Object.entries(seriesIndex).map(([name, entries]) => {
         <p class="series-progress">
           全 {total} 回構成・現在 {publishedCount} 回公開中
         </p>
+        <p class="series-intro-link">
+          → <a href="/series/line-mini-app/">連載の概要・読み方ガイドはこちら</a>
+        </p>
         <ul class="series-list">
           {entries.map((entry) => {
             const post = seriesPostMap.get(`${name}/${entry.no}`);
@@ -107,7 +110,11 @@ const seriesSections = Object.entries(seriesIndex).map(([name, entries]) => {
   .series-progress {
     color: #666;
     font-size: 0.9em;
-    margin: -0.5em 0 1em;
+    margin: -0.5em 0 0.3em;
+  }
+  .series-intro-link {
+    font-size: 0.95em;
+    margin: 0 0 1em;
   }
   .post-list {
     list-style: none;

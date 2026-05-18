@@ -1,0 +1,90 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("series");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"series">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formatDate = (d: Date) =>
+  `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <SiteNav />
+
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p class="meta">
+      <time datetime={entry.data.publishDate.toISOString()}>
+        公開: {formatDate(entry.data.publishDate)}
+      </time>
+      {
+        entry.data.updatedDate && (
+          <span>
+            ／最終更新:{" "}
+            <time datetime={entry.data.updatedDate.toISOString()}>
+              {formatDate(entry.data.updatedDate)}
+            </time>
+          </span>
+        )
+      }
+    </p>
+
+    <Content />
+  </article>
+
+  <p style="margin-top: 3em;"><a href="/blog/">← ブログ一覧へ</a></p>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .meta {
+    color: #999;
+    font-size: 0.9em;
+    margin-bottom: 2em;
+  }
+  article :global(h2) {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+    margin-top: 2.5em;
+  }
+  article :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+  }
+  article :global(th),
+  article :global(td) {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  article :global(th) {
+    background: #f6f8fa;
+  }
+  article :global(blockquote) {
+    border-left: 4px solid #1a73e8;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    color: #555;
+    background: #f8f9fa;
+  }
+  article :global(ul) {
+    line-height: 1.9;
+  }
+</style>
