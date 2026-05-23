@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="お問い合わせ"
+  description="Paratoki Lab が提供するアプリ（アニあと！・チックンノート・すくすくノート）へのお問い合わせ・不具合報告はこちら。"
+>
+  <SiteNav />
+
+  <h1>お問い合わせ</h1>
+  <p class="tagline">アプリに関するご質問・不具合報告をお受けしています</p>
+
+  <section>
+    <h2>まずヘルプをご確認ください</h2>
+    <p>よくあるご質問は各アプリのヘルプページで解決できる場合があります。</p>
+    <ul>
+      <li><a href="/apps/animetracker/">アニあと！— アプリ紹介・機能説明</a></li>
+      <li><a href="/apps/chickenote/">チックンノート — アプリ紹介・使い方</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>お問い合わせ方法</h2>
+    <p>
+      下記メールアドレスまでご連絡ください。<strong>3 営業日以内</strong>の返信を心がけています。
+    </p>
+    <p style="font-size: 1.1em; margin: 1em 0;">
+      <a href="mailto:info@paratoki.com">info@paratoki.com</a>
+    </p>
+    <p>メールの件名には、お使いのアプリ名を含めていただけると対応がスムーズです。</p>
+    <ul>
+      <li>例:【アニあと！】バックアップが復元できない</li>
+      <li>例:【チックンノート】通知が届かない</li>
+      <li>例:【すくすくノート】○○について</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>よくあるお問い合わせ</h2>
+
+    <h3>アニあと！（Android）</h3>
+    <ul>
+      <li>バックアップ・復元がうまくいかない</li>
+      <li>視聴記録が消えた / 表示がおかしい</li>
+      <li>機能要望・改善提案</li>
+    </ul>
+
+    <h3>チックンノート（LINE）</h3>
+    <ul>
+      <li>前日リマインダー通知が届かない</li>
+      <li>接種記録を誤って登録してしまった</li>
+      <li>データの削除・退会方法</li>
+      <li>JSON エクスポート / PDF 出力のトラブル</li>
+      <li>複数のお子さまを登録したい</li>
+    </ul>
+
+    <h3>すくすくノート（LINE・開発中）</h3>
+    <ul>
+      <li>ベータ版のフィードバック・不具合報告</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>免責事項</h2>
+    <ul>
+      <li>
+        チックンノート・すくすくノートは医療情報の提供を目的としたものではありません。接種の可否・時期などの医学的判断は必ず医師・かかりつけ医にご相談ください。
+      </li>
+      <li>
+        お問い合わせいただいた内容への返信は個人運営のため、多少お時間をいただく場合があります。
+      </li>
+    </ul>
+  </section>
+
+  <Footer />
+</BaseLayout>
