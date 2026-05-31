@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteNav from "../../../components/SiteNav.astro";
+import Footer from "../../../components/Footer.astro";
+
+const friendUrl = "https://lin.ee/6jgLRkT";
+const appUrl = "https://torisetsu.paratoki.com/";
+---
+
+<BaseLayout
+  title="とりせつノート"
+  description="家電・家具の取扱説明書（PDF）を家族で一か所に集約。部屋別に整理でき、製品名はもちろんPDF本文のキーワードでも検索できる LINE ミニアプリ。"
+>
+  <SiteNav />
+
+  <h1>とりせつノート</h1>
+  <p class="tagline">家族の取扱説明書（PDF）を、一か所にまとめて検索</p>
+  <p>
+    増えてきた家電・家具の取扱説明書（PDF）を家族で一か所に集約。部屋ごとに整理でき、製品名はもちろん
+    <strong>PDF本文のキーワード</strong>でも検索できる LIFF ミニアプリです。専用アプリのインストールは不要、LINE
+    だけで使えます。
+  </p>
+
+  <!-- 友だち追加（入り口） -->
+  <div class="cta">
+    <a class="line-btn" href={friendUrl} target="_blank" rel="noopener">
+      <span class="line-mark">LINE</span>
+      友だち追加して使ってみる
+    </a>
+    <div class="qr">
+      <img src="/torisetsu-qr.png" width="160" height="160" alt="とりせつノート 友だち追加用QRコード" />
+      <p class="qr-cap">スマホのLINEで読み取り</p>
+    </div>
+  </div>
+
+  <h2>特徴</h2>
+  <ul>
+    <li><strong>専用アプリ不要</strong> — LINE 公式アカウントを友だち追加するだけ</li>
+    <li><strong>PDF原本を保存</strong> — リンクではなく原本を保管。いつでもダウンロード可能</li>
+    <li><strong>部屋別に整理</strong> — リビング・キッチンなど場所ごとに一覧</li>
+    <li><strong>全文検索</strong> — 製品名＋PDF本文のキーワードで目的の取説をすぐ発見</li>
+    <li><strong>家族で共有</strong> — 招待コードで同じ世帯の取説を家族全員が参照</li>
+    <li><strong>無料</strong> — 個人運用のため広告も挟まず提供</li>
+  </ul>
+
+  <h2>使い方</h2>
+  <ol>
+    <li>LINE で公式アカウント「とりせつノート」を友だち追加</li>
+    <li>メニュー「アプリを開く」から LIFF アプリを起動</li>
+    <li>「世帯を作成」し、表示された招待コードを家族に共有（家族は「招待コードで参加」）</li>
+    <li>部屋を追加し、取説PDFを製品名とともに登録</li>
+    <li>製品名や PDF 内のキーワードで検索</li>
+  </ol>
+
+  <h2>使ってみる</h2>
+  <p>
+    <a href={friendUrl} target="_blank" rel="noopener">友だち追加（{friendUrl}）</a> から始められます。
+    すでに友だちの方は <a href={appUrl}>{appUrl}</a> で直接アプリを開けます（LINE ログインが必要です）。
+  </p>
+
+  <h2>注意事項</h2>
+  <ul>
+    <li>スキャンのみの画像PDF（テキストレイヤーなし）は本文検索の対象外です。製品名での検索は可能です。</li>
+    <li>本アプリはメーカー各社とは無関係の個人開発アプリです。取説の内容についてはメーカーへお問い合わせください。</li>
+  </ul>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    ご要望・不具合報告などは <a href="/contact/">お問い合わせページ</a> からどうぞ。
+  </p>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0 8px;
+  }
+  .line-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #06c755;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 1.05em;
+  }
+  .line-btn:hover {
+    background: #05b34c;
+  }
+  .line-mark {
+    background: #fff;
+    color: #06c755;
+    font-weight: 800;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+  }
+  .qr {
+    text-align: center;
+  }
+  .qr img {
+    border: 1px solid #eee;
+    border-radius: 8px;
+  }
+  .qr-cap {
+    color: #888;
+    font-size: 0.8em;
+    margin: 6px 0 0;
+  }
+</style>
