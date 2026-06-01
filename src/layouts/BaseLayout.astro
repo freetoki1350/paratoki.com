@@ -5,15 +5,18 @@ interface Props {
   title: string;
   description?: string;
   contentMaxWidth?: string;
+  image?: string;
 }
 
 const {
   title,
   description = "Paratoki Lab — 日々の暮らしに寄り添うアプリを開発しています。",
   contentMaxWidth = "800px",
+  image,
 } = Astro.props;
 
 const fullTitle = title === "Paratoki Lab" ? title : `${title} | Paratoki Lab`;
+const ogImage = image ? new URL(image, Astro.site).toString() : null;
 ---
 
 <!doctype html>
@@ -23,6 +26,18 @@ const fullTitle = title === "Paratoki Lab" ? title : `${title} | Paratoki Lab`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <!-- OGP -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <title>{fullTitle}</title>
     <script
       async
