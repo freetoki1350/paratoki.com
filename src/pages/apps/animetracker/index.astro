@@ -55,11 +55,12 @@ const playUrl =
     <li>
       <strong>AniList 検索（任意）</strong> — 作品追加画面の「AniListで検索」から、外部の作品データベース
       <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a>
-      にタイトルを問い合わせて、話数・放送年・スタジオ・ジャケット画像を自動入力できます。使うかどうかは利用者が選べます
+      にタイトルを問い合わせて、話数・放送年・スタジオ・ジャケット画像を自動入力できます。使うかどうかは利用者が選べます。ただし検索結果からジャケット画像を取り込むと、その画像を削除するまで、表示のたびに
+      AniList の画像配信サーバーへの通信が発生し得ます
     </li>
     <li>
-      <strong>オフライン動作</strong> — 視聴記録の閲覧・登録・統計・バックアップはネットワークなしで動作（通信が必要なのは
-      AniList 検索とアプリ内課金の購入手続きのみです）
+      <strong>オフライン動作</strong> — 視聴記録の閲覧・登録・統計・バックアップはネットワークなしで動作します（通信が発生するのは
+      AniList 検索、取り込んだジャケット画像の取得、アプリ内課金の購入手続き、アプリ内レビュー依頼です）
     </li>
   </ul>
 
@@ -85,10 +86,11 @@ const playUrl =
     <li>本アプリ独自のサーバーは存在せず、視聴記録が当方に送信されることはありません</li>
     <li>入力データはすべて端末内ストレージに保存されます</li>
     <li>クラウド同期機能はありません（自分で取るバックアップが基本）</li>
-    <li>広告 SDK・アクセス解析 SDK の組み込みはありません</li>
+    <li>当方は広告 SDK・アクセス解析 SDK・クラッシュレポート SDK を組み込んでいません</li>
     <li>
-      外部と通信するのは次の 3 つに限られます — AniList 検索（入力した検索語が AniList
-      に送信されます）、アプリ内課金（Google Play）、アプリ内レビュー依頼（Google Play）
+      外部と通信するのは次の 4 つです — AniList 検索（入力した検索語が AniList
+      に送信されます）、取り込んだジャケット画像の取得（画像を削除するまで継続的に発生し得ます）、アプリ内課金（Google
+      Play）、アプリ内レビュー依頼（Google Play）
     </li>
   </ul>
   <p>
@@ -112,17 +114,18 @@ const playUrl =
   <ul>
     <li>Android 8.0（API レベル 26）以上</li>
     <li>
-      要求する権限: <code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>（アプリ内課金および今後のオンライン連携機能のため）、
-      <code>com.android.vending.BILLING</code>（アプリ内課金）
+      当方が宣言している権限は 2 件のみ: <code>INTERNET</code>（AniList
+      検索・画像取得・課金処理などの通信）、<code>com.android.vending.BILLING</code>（アプリ内課金）
     </li>
     <li>
       ストレージ・カメラ・位置情報・連絡先などの権限は要求しません。バックアップの保存先選択は
       Android 標準のファイルピッカー（Storage Access Framework）を経由します
     </li>
     <li>
-      このほか、利用しているライブラリ（androidx）が自動的に付与する自己定義の権限が 1 件
-      （<code>com.paratoki.animetracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>）あります。
-      本アプリ自身の署名でのみ取得できる内部的なものです
+      このほか、利用しているライブラリが自動的に付与する権限が 2 件あります —
+      <code>ACCESS_NETWORK_STATE</code>（アプリ内課金ライブラリの依存先が付与するもので、当方のコードでは使用していません）と
+      <code>com.paratoki.animetracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>
+      （androidx が付与する、本アプリ自身の署名でのみ取得できる内部的なもの）
     </li>
   </ul>
 
