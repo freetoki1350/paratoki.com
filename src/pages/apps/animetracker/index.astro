@@ -2,11 +2,14 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteNav from "../../../components/SiteNav.astro";
 import Footer from "../../../components/Footer.astro";
+
+const playUrl =
+  "https://play.google.com/store/apps/details?id=com.paratoki.animetracker";
 ---
 
 <BaseLayout
   title="アニあと！〜私のアニメの軌跡〜"
-  description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、自分のデータは自分の手元に。Google Play 公開中。"
+  description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。視聴記録は端末内のみ、自分のデータは自分の手元に。Google Play 公開中。"
 >
   <SiteNav />
 
@@ -14,9 +17,17 @@ import Footer from "../../../components/Footer.astro";
   <p class="tagline">〜私のアニメの軌跡〜</p>
   <p>
     アニメの視聴記録を <strong>端末ローカル</strong> に保存できる Android
-    アプリです。視聴履歴は自分の手元にだけ残り、外部サーバーに送信されません。「観た / 観ている
-    / 未視聴」のシンプルな管理で、自分のアニメ視聴の軌跡を振り返れます。
+    アプリです。視聴履歴は自分の手元にだけ残り、当方のサーバーへ送信することはありません。「観た
+    / 観ている / 未視聴」のシンプルな管理で、自分のアニメ視聴の軌跡を振り返れます。
   </p>
+
+  <!-- ストア（入り口） -->
+  <div class="cta">
+    <a class="play-btn" href={playUrl} target="_blank" rel="noopener">
+      <span class="play-mark">Google Play</span>
+      で入手する
+    </a>
+  </div>
 
   <h2>こんな方に</h2>
   <ul>
@@ -42,7 +53,13 @@ import Footer from "../../../components/Footer.astro";
       <strong>バックアップ</strong> — 端末ストレージや任意のクラウドストレージへのエクスポート（インポートも可）
     </li>
     <li>
-      <strong>オフライン動作</strong> — 視聴記録の閲覧・登録・統計・バックアップはネットワークなしで動作（アプリ内課金の購入手続きのみ通信が必要です）
+      <strong>AniList 検索（任意）</strong> — 作品追加画面の「AniListで検索」から、外部の作品データベース
+      <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a>
+      にタイトルを問い合わせて、話数・放送年・スタジオ・ジャケット画像を自動入力できます。使うかどうかは利用者が選べます
+    </li>
+    <li>
+      <strong>オフライン動作</strong> — 視聴記録の閲覧・登録・統計・バックアップはネットワークなしで動作（通信が必要なのは
+      AniList 検索とアプリ内課金の購入手続きのみです）
     </li>
   </ul>
 
@@ -65,10 +82,14 @@ import Footer from "../../../components/Footer.astro";
 
   <h2>プライバシー方針</h2>
   <ul>
-    <li>個人情報は外部サーバーに送信しません</li>
+    <li>本アプリ独自のサーバーは存在せず、視聴記録が当方に送信されることはありません</li>
     <li>入力データはすべて端末内ストレージに保存されます</li>
     <li>クラウド同期機能はありません（自分で取るバックアップが基本）</li>
-    <li>広告・分析 SDK の組み込みはありません</li>
+    <li>広告 SDK・アクセス解析 SDK の組み込みはありません</li>
+    <li>
+      外部と通信するのは次の 3 つに限られます — AniList 検索（入力した検索語が AniList
+      に送信されます）、アプリ内課金（Google Play）、アプリ内レビュー依頼（Google Play）
+    </li>
   </ul>
   <p>
     詳細は <a href="/apps/animetracker/privacy/">プライバシーポリシー</a> をご確認ください。
@@ -76,7 +97,12 @@ import Footer from "../../../components/Footer.astro";
 
   <h2>提供状況</h2>
   <p>
-    <strong>Google Play にて公開中</strong>（2026 年 5 月）。
+    <strong>Google Play にて公開中</strong>（2026 年 5 月公開）。
+  </p>
+  <p>
+    <a href={playUrl} target="_blank" rel="noopener noreferrer">
+      Google Play ストアページ（{playUrl}）
+    </a>
   </p>
   <p>
     なぜ商業性が高くないこのアプリを個人で公開しているのかは <a href="/about/">運営者情報</a> の「アプリ開発の哲学」セクションに書いています。
@@ -107,3 +133,37 @@ import Footer from "../../../components/Footer.astro";
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0 8px;
+  }
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #01875f;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 1.05em;
+  }
+  .play-btn:hover {
+    background: #016b4c;
+  }
+  .play-mark {
+    background: #fff;
+    color: #01875f;
+    font-weight: 800;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -14,26 +14,195 @@ import Footer from "../../../components/Footer.astro";
 
   <h1>プライバシーポリシー</h1>
   <p>アニあと！〜私のアニメの軌跡〜</p>
-  <p>最終更新: 2026年4月22日</p>
-
-  <h2>1. 取得する情報</h2>
-  <p>
-    アニあと！は、個人情報を外部サーバーに送信しません。入力された作品データはお使いの端末内にのみ保存されます。
+  <p class="meta">
+    最終更新: 2026年7月26日<br />
+    対象バージョン: 1.1
   </p>
 
-  <h2>2. 課金について</h2>
+  <h2>1. 取得する情報と保存場所</h2>
   <p>
-    アプリ内課金には Google Play Billing を利用します。課金処理はすべて Google
-    が管理します。当アプリはお支払い情報を取得・保存しません。
+    <strong>アニあと！には、本アプリ独自のサーバーは存在しません。</strong>
+    アプリに入力された作品データ（タイトル・話数・視聴ステータス・視聴メモなど）は、お使いの端末内のストレージにのみ保存され、当方が運営するサーバーへ送信・収集されることはありません。
+  </p>
+  <p>
+    氏名・メールアドレス・電話番号・位置情報・連絡先などの個人情報を、アプリが取得することはありません。アカウント登録も不要です。
+  </p>
+  <p>
+    ただし、以下の 3 つの機能では、その機能を利用したときに限り外部との通信が発生します。詳細は次項以降に記載します。
+  </p>
+  <ul>
+    <li>AniList 検索（外部の作品データベースへの問い合わせ）</li>
+    <li>アプリ内課金（Google Play）</li>
+    <li>アプリ内レビュー依頼（Google Play）</li>
+  </ul>
+
+  <h2>2. AniList 検索について</h2>
+  <p>
+    作品追加・編集画面の「AniListで検索」から、外部の作品データベースである
+    <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a>
+    （AniList / AniChart, 米国）へタイトルを問い合わせ、話数・放送年・制作スタジオ・ジャケット画像を自動入力できます。
+  </p>
+  <ul>
+    <li>
+      送信される情報は、<strong>利用者が検索欄に入力した文字列</strong>のみです。視聴記録・視聴ステータス・メモなど、アプリ内の他のデータが送信されることはありません
+    </li>
+    <li>
+      検索結果のジャケット画像は AniList の画像配信サーバーから取得されるため、その際に端末の IP
+      アドレス・通信に伴う標準的な情報が AniList 側に渡ります
+    </li>
+    <li>
+      この機能は<strong>任意</strong>です。「AniListで検索」を使わずに手入力のみで利用する場合、AniList
+      への通信は発生しません
+    </li>
+    <li>
+      AniList 側での情報の取り扱いについては、同社の
+      <a
+        href="https://anilist.co/terms"
+        target="_blank"
+        rel="noopener noreferrer">利用規約・プライバシーポリシー</a
+      >をご確認ください
+    </li>
+  </ul>
+
+  <h2>3. 課金について</h2>
+  <p>
+    アプリ内課金には Google Play Billing を利用します。購入手続き・決済処理・購入状態の管理はすべて
+    Google LLC（Google Play）が行い、その過程で購入に関する情報が Google
+    のサーバーとやり取りされます。<strong
+      >当アプリはクレジットカード番号などのお支払い情報を取得・保存しません。</strong
+    >
+  </p>
+  <p>
+    Google における情報の取り扱いについては
+    <a
+      href="https://policies.google.com/privacy?hl=ja"
+      target="_blank"
+      rel="noopener noreferrer">Google プライバシーポリシー</a
+    >をご確認ください。
   </p>
 
-  <h2>3. バックアップ機能</h2>
+  <h2>4. アプリ内レビュー依頼について</h2>
   <p>
-    バックアップ機能は、ユーザー自身が端末またはクラウドストレージにデータを保存するものです。データの自動送信は行いません。
+    登録作品数が一定数に達した際に、Google Play のアプリ内レビュー機能（In-App
+    Review）でレビュー投稿のご案内を表示することがあります（一度のみ）。この機能は Google Play
+    が提供するもので、レビューの内容および投稿の有無は Google
+    が管理します。当アプリが利用者のレビュー内容や Google アカウント情報を取得することはありません。
   </p>
 
-  <h2>4. お問い合わせ</h2>
-  <p><a href="mailto:info@paratoki.com">info@paratoki.com</a></p>
+  <h2>5. バックアップ機能</h2>
+  <p>
+    バックアップ機能は、ユーザー自身が端末またはご自身で選んだクラウドストレージへデータを書き出す（および読み込む）ものです。保存先は
+    Android 標準のファイル選択画面（Storage Access
+    Framework）で利用者が指定します。当方がバックアップデータを受け取ることはなく、自動送信も行いません。
+  </p>
+  <p>
+    保存先としてクラウドストレージを選んだ場合、そのデータは当該クラウド事業者の管理下に置かれます。
+  </p>
+
+  <h2>6. 広告・アクセス解析</h2>
+  <p>
+    本アプリには広告 SDK・アクセス解析 SDK・クラッシュレポート SDK
+    を組み込んでいません。利用者の行動を追跡する仕組みはありません。
+  </p>
+
+  <h2>7. 要求する権限</h2>
+  <p>本アプリが Android に要求する権限は、以下の 4 件がすべてです。</p>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>権限</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>com.android.vending.BILLING</code></td>
+          <td>アプリ内課金（Google Play Billing）を利用するため</td>
+        </tr>
+        <tr>
+          <td><code>android.permission.INTERNET</code></td>
+          <td>
+            AniList 検索、アプリ内課金の処理、アプリ内レビュー依頼のための通信を行うため
+          </td>
+        </tr>
+        <tr>
+          <td><code>android.permission.ACCESS_NETWORK_STATE</code></td>
+          <td>
+            通信状態（オンライン / オフライン）を判定し、圏外時に不要な通信やエラー表示を避けるため
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>com.paratoki.animetracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>
+          </td>
+          <td>
+            利用しているライブラリ（androidx）が自動的に付与する自己定義の権限。アプリ内部の通知受信を他アプリから隔離するためのもので、本アプリ自身の署名でのみ取得できます。利用者のデータには一切関係しません
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    ストレージ・カメラ・マイク・位置情報・連絡先・電話などの権限は要求しません。
+  </p>
+
+  <h2>8. 第三者提供</h2>
+  <p>
+    法令に基づく場合を除き、当方が利用者の情報を第三者へ提供することはありません。前述の AniList・Google
+    Play への通信は、利用者がその機能を使うために必要な範囲で行われるものです。
+  </p>
+
+  <h2>9. お子さまの利用について</h2>
+  <p>
+    本アプリは特定の年齢層を対象とした設計を行っておらず、児童から意図的に個人情報を収集することはありません。
+  </p>
+
+  <h2>10. ポリシーの変更</h2>
+  <p>
+    機能追加や法令の変更等により本ポリシーを改定する場合は、本ページに改定後の内容を掲載します。掲載した時点から効力を生じます。
+  </p>
+
+  <h2>11. お問い合わせ</h2>
+  <p>
+    提供者: Paratoki Lab<br />
+    連絡先: <a href="mailto:info@paratoki.com">info@paratoki.com</a>
+  </p>
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .meta {
+    color: #888;
+    font-size: 0.9em;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
+    margin: 1em 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95em;
+  }
+  th,
+  td {
+    border: 1px solid #e5e5e5;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #f8f9fa;
+  }
+  td code {
+    word-break: break-all;
+  }
+  ul {
+    padding-left: 1.5em;
+  }
+  ul li {
+    margin: 0.3em 0;
+  }
+</style>
