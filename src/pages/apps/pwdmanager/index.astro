@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteNav from "../../../components/SiteNav.astro";
+import Footer from "../../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="かぎパスノート"
+  description="通信ゼロ・アカウント不要で守るパスワード管理。生体認証対応、全データは端末内で暗号化。Android アプリ（現在 Google Play 公開準備中）。"
+>
+  <SiteNav />
+
+  <h1>かぎパスノート</h1>
+  <p class="tagline">〜オフラインで守るパスワード〜</p>
+
+  <p class="notice">
+    <strong>本アプリはまだ公開されていません。</strong> Google Play
+    での配信に向けて準備中のため、現時点で入手・利用いただくことはできません。公開次第、本ページと
+    <a href="/apps/">アプリ一覧</a> でお知らせします。
+  </p>
+
+  <p>
+    通信ゼロ・アカウント不要で守るパスワード管理。生体認証対応、全データは端末内で暗号化。複数サイトの
+    ID・パスワードを、お使いの Android 端末の中だけで管理するためのアプリです。
+  </p>
+
+  <h2>こんな方に</h2>
+  <ul>
+    <li>クラウド同期のあるパスワード管理サービスに預けることに抵抗がある</li>
+    <li>アカウント登録やログインをせずに使い始めたい</li>
+    <li>通信を一切行わない、閉じた道具としてパスワードを管理したい</li>
+    <li>端末を紛失したときのために、暗号化したままのバックアップを自分で持っておきたい</li>
+  </ul>
+
+  <h2>主な機能</h2>
+  <ul>
+    <li>
+      <strong>ID・パスワードの管理</strong> — 複数サイトのサイト名・URL・ログインID・パスワード・メモを端末内で一覧管理
+    </li>
+    <li>
+      <strong>生体認証での解錠</strong> — 端末の生体認証（指紋等）でロックを解除できます（任意設定）
+    </li>
+    <li>
+      <strong>パスワード生成</strong> — 強度の高いパスワードをアプリ内で生成
+    </li>
+    <li>
+      <strong>バックアップ / リストア</strong> — <strong>暗号化したままの状態</strong>でファイルに書き出し、同じマスターパスワードで復元できます
+    </li>
+  </ul>
+
+  <h2>暗号方式</h2>
+  <p>
+    マスターパスワードから <strong>PBKDF2（SHA-256・60 万回の反復処理）</strong> で鍵を導出し、その鍵で
+    <strong>AES-GCM 256bit</strong> によりデータを暗号化して端末内に保存します。
+    <strong>マスターパスワードそのものは保存しません</strong>（暗号の復号可否でのみ照合します）。
+  </p>
+
+  <h2>プライバシー方針</h2>
+  <ul>
+    <li>
+      <strong>通信ゼロ</strong> — 本アプリはネットワーク通信を一切行いません。インターネット通信に必要な
+      <code>INTERNET</code> 権限自体を保持していません
+    </li>
+    <li><strong>アカウント不要</strong> — 登録・ログインなしで使えます</li>
+    <li><strong>追跡なし</strong> — 広告 SDK・アクセス解析 SDK を組み込んでいません</li>
+    <li>
+      <strong>実行時に許可を求める権限はありません</strong> — ストレージ・カメラ・連絡先・位置情報のいずれの権限も要求しません
+    </li>
+    <li>
+      宣言している権限は、生体認証に関する <code>USE_BIOMETRIC</code> /
+      <code>USE_FINGERPRINT</code> と、利用ライブラリ（androidx）が自動的に付与する自己定義の権限 1 件の計
+      3 件です（いずれも実行時の許可ダイアログは表示されません）
+    </li>
+  </ul>
+  <p>
+    詳細は <a href="/apps/pwdmanager/privacy/">プライバシーポリシー</a> をご確認ください。
+  </p>
+
+  <h2>提供状況</h2>
+  <p>
+    <strong>Google Play 公開準備中</strong>です。ストアページはまだ存在せず、入手いただくことはできません。公開時期は未定です。
+  </p>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    ご要望・不具合報告などは <a href="/contact/">お問い合わせページ</a> からどうぞ。
+  </p>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .notice {
+    color: #555;
+    background: #fff8e1;
+    border-left: 3px solid #f0ad00;
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    margin: 20px 0;
+  }
+</style>
