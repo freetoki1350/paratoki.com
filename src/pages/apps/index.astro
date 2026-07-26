@@ -9,6 +9,8 @@ interface AppEntry {
   description: string;
   platform: string;
   status: string;
+  storeUrl?: string;
+  storeLabel?: string;
 }
 
 const apps: AppEntry[] = [
@@ -16,9 +18,12 @@ const apps: AppEntry[] = [
     slug: "animetracker",
     title: "アニあと！〜私のアニメの軌跡〜",
     description:
-      "アニメの視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、データは自分の手元に。",
+      "アニメの視聴記録を端末ローカルに保存できる Android アプリ。視聴記録は端末内のみ、データは自分の手元に。",
     platform: "Android",
     status: "Google Play 公開中",
+    storeUrl:
+      "https://play.google.com/store/apps/details?id=com.paratoki.animetracker",
+    storeLabel: "Google Play で入手",
   },
   {
     slug: "chickenote",
@@ -60,6 +65,13 @@ const apps: AppEntry[] = [
           {" ・ "}
           <span class="status">{app.status}</span>
         </p>
+        {app.storeUrl && (
+          <p class="store-link">
+            <a href={app.storeUrl} target="_blank" rel="noopener noreferrer">
+              {app.storeLabel}
+            </a>
+          </p>
+        )}
       </div>
     ))
   }
@@ -72,5 +84,9 @@ const apps: AppEntry[] = [
     color: #888;
     font-size: 0.85em;
     margin-top: 8px;
+  }
+  .store-link {
+    font-size: 0.9em;
+    margin-top: 4px;
   }
 </style>
