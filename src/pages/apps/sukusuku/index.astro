@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteNav from "../../../components/SiteNav.astro";
+import Footer from "../../../components/Footer.astro";
+
+const friendUrl = "https://lin.ee/OXn71Nk";
+const appUrl = "https://sukusuku.paratoki.com";
+---
+
+<BaseLayout
+  title="すくすくノート"
+  description="乳幼児健診のスケジュール管理と成長記録（身長・体重・頭囲）を LINE で。健診の 1 週間前と前日にリマインダーが届く LINE ミニアプリ。"
+>
+  <SiteNav />
+
+  <h1>すくすくノート</h1>
+  <p class="tagline">乳幼児健診のスケジュールと成長記録を、LINE でまとめて</p>
+  <p>
+    乳幼児健診の予定を管理し、身長・体重・頭囲などの成長記録を残せる LIFF
+    ミニアプリです。健診の <strong>1 週間前</strong> と <strong>前日</strong> に LINE
+    へリマインダーが届きます。専用アプリのインストールは不要で、LINE だけで使えます。
+  </p>
+
+  <!-- 友だち追加（入り口） -->
+  <div class="cta">
+    <a class="line-btn" href={friendUrl} target="_blank" rel="noopener">
+      <span class="line-mark">LINE</span>
+      友だち追加して使ってみる
+    </a>
+  </div>
+
+  <h2>主な機能</h2>
+  <ul>
+    <li>
+      <strong>健診スケジュール管理</strong> — 乳幼児健診の予定を登録して一覧で確認できます
+    </li>
+    <li>
+      <strong>リマインダー</strong> — 健診の 1 週間前と前日に LINE へ通知が届きます
+    </li>
+    <li>
+      <strong>成長記録</strong> — 身長・体重・頭囲を記録して推移を残せます
+    </li>
+    <li>
+      <strong>発達確認項目</strong> — 健診で確認される項目をチェックしておけます
+    </li>
+    <li>
+      <strong>医師メモ</strong> — 健診時に言われたことをその場で書き留められます
+    </li>
+    <li>
+      <strong>PDF 出力</strong> — 記録を PDF として書き出せます
+    </li>
+  </ul>
+
+  <h2>使い方</h2>
+  <ol>
+    <li>LINE で公式アカウント「すくすくノート」を友だち追加</li>
+    <li>メニューから LIFF アプリを起動</li>
+    <li>お子さまの情報を登録して健診の予定を作成</li>
+    <li>健診の 1 週間前・前日に LINE のリマインダーを受け取る</li>
+    <li>健診当日は成長記録・発達確認項目・医師メモを記入</li>
+  </ol>
+
+  <h2>使ってみる</h2>
+  <p>
+    <a href={friendUrl} target="_blank" rel="noopener">友だち追加（{friendUrl}）</a> から始められます。
+    すでに友だちの方は <a href={appUrl} target="_blank" rel="noopener">{appUrl}</a> で直接アプリを開けます（LINE
+    ログインが必要です）。
+  </p>
+
+  <h2>データの取り扱い</h2>
+  <ul>
+    <li>
+      <strong>入力はすべて任意です</strong> — 身長・体重・頭囲・発達確認項目・医師メモのいずれも、記入しなくても健診スケジュールの管理機能は利用できます
+    </li>
+    <li>
+      <strong>健診の記録は要配慮個人情報に該当し得ます</strong> — お子さまの健康状態に関する情報を含むため、入力内容はご自身の判断でお決めください
+    </li>
+    <li>
+      <strong>PDF 出力の URL の扱いにご注意ください</strong> — PDF 出力で発行される
+      URL は、その URL を知っている第三者であれば閲覧できます。共有する相手にはご留意ください
+    </li>
+    <li>
+      <strong>いつでも削除できます</strong> — 登録したデータは設定画面からいつでも削除できます
+    </li>
+  </ul>
+
+  <h2>規約とプライバシー</h2>
+  <ul>
+    <li>
+      <a
+        href="https://sukusuku.paratoki.com/legal/privacy"
+        target="_blank"
+        rel="noopener noreferrer">プライバシーポリシー</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://sukusuku.paratoki.com/legal/terms"
+        target="_blank"
+        rel="noopener noreferrer">利用規約</a
+      >
+    </li>
+  </ul>
+
+  <h2>注意事項</h2>
+  <ul>
+    <li>
+      本アプリは個別の医学的助言・診断・治療を提供するものではありません。お子さまの発育・健康についてのご判断は必ず医師・かかりつけ医にご相談ください
+    </li>
+    <li>
+      健診の実施時期や内容はお住まいの自治体により異なります。正式な案内は自治体からの通知をご確認ください
+    </li>
+  </ul>
+
+  <h2>提供状況</h2>
+  <p><strong>公開中</strong>（2026 年 5 月 23 日 一般公開）。</p>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    ご要望・不具合報告などは <a href="/contact/">お問い合わせページ</a> からどうぞ。
+  </p>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0 8px;
+  }
+  .line-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #06c755;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 1.05em;
+  }
+  .line-btn:hover {
+    background: #05b34c;
+  }
+  .line-mark {
+    background: #fff;
+    color: #06c755;
+    font-weight: 800;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+  }
+</style>
