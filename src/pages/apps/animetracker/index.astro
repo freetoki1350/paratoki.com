@@ -6,7 +6,7 @@ import Footer from "../../../components/Footer.astro";
 
 <BaseLayout
   title="アニあと！〜私のアニメの軌跡〜"
-  description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、自分のデータは自分の手元に。Google Play 審査中。"
+  description="アニメ視聴記録を端末ローカルに保存できる Android アプリ。クラウド送信なし、自分のデータは自分の手元に。Google Play 公開中。"
 >
   <SiteNav />
 
@@ -42,12 +42,12 @@ import Footer from "../../../components/Footer.astro";
       <strong>バックアップ</strong> — 端末ストレージや任意のクラウドストレージへのエクスポート（インポートも可）
     </li>
     <li>
-      <strong>オフライン動作</strong> — ネットワークなしでも全機能が動作
+      <strong>オフライン動作</strong> — 視聴記録の閲覧・登録・統計・バックアップはネットワークなしで動作（アプリ内課金の購入手続きのみ通信が必要です）
     </li>
   </ul>
 
   <h2>主な画面</h2>
-  <p>※ スクリーンショットは Google Play 公開時に本ページに掲載予定です。</p>
+  <p>※ スクリーンショットは本ページに掲載準備中です。Google Play のストアページでご覧いただけます。</p>
   <ul>
     <li>
       <strong>ホーム画面</strong> — 現在「視聴中」のアニメ一覧と直近の視聴履歴を表示
@@ -82,11 +82,22 @@ import Footer from "../../../components/Footer.astro";
     なぜ商業性が高くないこのアプリを個人で公開しているのかは <a href="/about/">運営者情報</a> の「アプリ開発の哲学」セクションに書いています。
   </p>
 
-  <h2>動作環境（予定）</h2>
+  <h2>動作環境</h2>
   <ul>
     <li>Android 8.0（API レベル 26）以上</li>
-    <li>必要権限: ストレージアクセス（バックアップ機能を使う場合のみ）</li>
-    <li>必須ネットワーク権限: なし</li>
+    <li>
+      要求する権限: <code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code>（アプリ内課金および今後のオンライン連携機能のため）、
+      <code>com.android.vending.BILLING</code>（アプリ内課金）
+    </li>
+    <li>
+      ストレージ・カメラ・位置情報・連絡先などの権限は要求しません。バックアップの保存先選択は
+      Android 標準のファイルピッカー（Storage Access Framework）を経由します
+    </li>
+    <li>
+      このほか、利用しているライブラリ（androidx）が自動的に付与する自己定義の権限が 1 件
+      （<code>com.paratoki.animetracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>）あります。
+      本アプリ自身の署名でのみ取得できる内部的なものです
+    </li>
   </ul>
 
   <h2>お問い合わせ</h2>
