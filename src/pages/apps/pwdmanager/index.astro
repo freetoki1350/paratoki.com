@@ -2,27 +2,32 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SiteNav from "../../../components/SiteNav.astro";
 import Footer from "../../../components/Footer.astro";
+
+const playUrl =
+  "https://play.google.com/store/apps/details?id=com.paratoki.pwdmanager";
 ---
 
 <BaseLayout
   title="かぎパスノート"
-  description="通信ゼロ・アカウント不要で守るパスワード管理。生体認証対応、全データは端末内で暗号化。Android アプリ（現在 Google Play 公開準備中）。"
+  description="通信ゼロ・アカウント不要で守るパスワード管理。生体認証対応、全データは端末内で暗号化。Android アプリ、Google Play 公開中。"
 >
   <SiteNav />
 
   <h1>かぎパスノート</h1>
   <p class="tagline">〜オフラインで守るパスワード〜</p>
 
-  <p class="notice">
-    <strong>本アプリはまだ公開されていません。</strong> Google Play
-    での配信に向けて準備中のため、現時点で入手・利用いただくことはできません。公開次第、本ページと
-    <a href="/apps/">アプリ一覧</a> でお知らせします。
-  </p>
-
   <p>
     通信ゼロ・アカウント不要で守るパスワード管理。生体認証対応、全データは端末内で暗号化。複数サイトの
     ID・パスワードを、お使いの Android 端末の中だけで管理するためのアプリです。
   </p>
+
+  <!-- ストア（入り口） -->
+  <div class="cta">
+    <a class="play-btn" href={playUrl} target="_blank" rel="noopener">
+      <span class="play-mark">Google Play</span>
+      で入手する
+    </a>
+  </div>
 
   <h2>こんな方に</h2>
   <ul>
@@ -78,7 +83,12 @@ import Footer from "../../../components/Footer.astro";
 
   <h2>提供状況</h2>
   <p>
-    <strong>Google Play 公開準備中</strong>です。ストアページはまだ存在せず、入手いただくことはできません。公開時期は未定です。
+    <strong>Google Play にて公開中</strong>（2026 年 7 月公開）。配信対象は日本国内です。
+  </p>
+  <p>
+    <a href={playUrl} target="_blank" rel="noopener noreferrer">
+      Google Play ストアページ（{playUrl}）
+    </a>
   </p>
 
   <h2>お問い合わせ</h2>
@@ -90,12 +100,35 @@ import Footer from "../../../components/Footer.astro";
 </BaseLayout>
 
 <style>
-  .notice {
-    color: #555;
-    background: #fff8e1;
-    border-left: 3px solid #f0ad00;
-    padding: 12px 16px;
-    border-radius: 0 4px 4px 0;
-    margin: 20px 0;
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0 8px;
+  }
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #01875f;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 1.05em;
+  }
+  .play-btn:hover {
+    background: #016b4c;
+  }
+  .play-mark {
+    background: #fff;
+    color: #01875f;
+    font-weight: 800;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
   }
 </style>
