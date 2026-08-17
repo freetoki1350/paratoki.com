@@ -21,6 +21,44 @@ const { Content } = await post.render();
 
 const formatDate = (d: Date) =>
   `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+
+// 連載の前後ナビ
+const seriesName = post.data.series;
+const seriesNo = post.data.seriesNo;
+const sameSeries =
+  seriesName && seriesNo
+    ? allPosts
+        .filter((p) => p.data.series === seriesName && p.data.seriesNo)
+        .sort((a, b) => a.data.seriesNo! - b.data.seriesNo!)
+    : [];
+const prevPost = sameSeries.find((p) => p.data.seriesNo === seriesNo! - 1);
+const nextPost = sameSeries.find((p) => p.data.seriesNo === seriesNo! + 1);
+
+// 連載目次へのリンク。series コレクションのタイトル（例: 「連載: LINE ミニアプリ開発記」）
+// に連載名が含まれるものを引き当てる。
+const seriesEntries = seriesName ? await getCollection("series") : [];
+const seriesHub = seriesEntries.find((e) => e.data.title.includes(seriesName!));
+
+// 関連記事: tags の重複数が多い順に最大 3 件。前後ナビと重複するものは除外。
+const excluded = new Set(
+  [post.slug, prevPost?.slug, nextPost?.slug].filter(Boolean) as string[]
+);
+const relatedPosts = allPosts
+  .filter((p) => !excluded.has(p.slug))
+  .map((p) => ({
+    post: p,
+    score: p.data.tags.filter((t) => post.data.tags.includes(t)).length,
+  }))
+  .filter((r) => r.score > 0)
+  .sort(
+    (a, b) =>
+      b.score - a.score ||
+      b.post.data.publishDate.getTime() - a.post.data.publishDate.getTime()
+  )
+  .slice(0, 3)
+  .map((r) => r.post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
@@ -62,6 +100,54 @@ const formatDate = (d: Date) =>
     <Content />
   </article>
 
+  {
+    (prevPost || nextPost) && (
+      <nav class="series-nav" aria-label="連載の前後の記事">
+        {prevPost && (
+          <a class="series-nav-item" href={`/blog/${prevPost.slug}/`}>
+            <span class="series-nav-label">
+              ← 前の記事（第 {prevPost.data.seriesNo} 回）
+            </span>
+            <span class="series-nav-title">{prevPost.data.title}</span>
+          </a>
+        )}
+        {nextPost && (
+          <a class="series-nav-item next" href={`/blog/${nextPost.slug}/`}>
+            <span class="series-nav-label">
+              次の記事（第 {nextPost.data.seriesNo} 回）→
+            </span>
+            <span class="series-nav-title">{nextPost.data.title}</span>
+          </a>
+        )}
+      </nav>
+    )
+  }
+
+  {
+    seriesHub && (
+      <p class="series-hub">
+        <a href={`/series/${seriesHub.slug}/`}>
+          {seriesName} の目次・読み方ガイドへ
+        </a>
+      </p>
+    )
+  }
+
+  {
+    relatedPosts.length > 0 && (
+      <section class="related">
+        <h2>関連記事</h2>
+        <ul>
+          {relatedPosts.map((p) => (
+            <li>
+              <a href={`/blog/${p.slug}/`}>{p.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
   <p style="margin-top: 3em;"><a href="/blog/">← ブログ一覧へ</a></p>
 
   <Footer />
@@ -91,6 +177,50 @@ const formatDate = (d: Date) =>
     border-radius: 4px;
     font-size: 0.85em;
     margin-right: 4px;
+  }
+  .series-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 3em;
+  }
+  .series-nav-item {
+    flex: 1 1 240px;
+    display: block;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 12px 16px;
+    text-decoration: none;
+    background: #fafafa;
+  }
+  .series-nav-item.next {
+    text-align: right;
+  }
+  .series-nav-label {
+    display: block;
+    color: #999;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+  .series-nav-title {
+    display: block;
+    font-size: 0.95em;
+  }
+  .series-hub {
+    margin-top: 1.5em;
+    font-size: 0.95em;
+  }
+  .related {
+    margin-top: 3em;
+  }
+  .related h2 {
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+  }
+  .related ul {
+    line-height: 1.9;
+    padding-left: 1.2em;
   }
   article :global(h2) {
     border-bottom: 1px solid #eee;
